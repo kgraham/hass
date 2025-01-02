@@ -1,1 +1,18 @@
+blueprint:
+  name: Trigger notifications to Inovelli switches
+  description: Example showing an input
+  source_url: https://github.com/kgraham/hass/blob/main/inovelli_notifications.yaml
+  input:
+    light_target:
+      name: Light
+      selector:
+        target:
+          entity:
+            domain: light
 
+mode: restart
+max_exceeded: silent
+actions:
+  - alias: "Turn on the light"
+    action: light.turn_on
+    target: !input light_target
